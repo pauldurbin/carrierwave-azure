@@ -41,7 +41,7 @@ module CarrierWave
 
         def store!(file)
           file.to_file.each_chunk do |chunk|
-            puts "CHUNK #{@counter}"
+            Rails.logger.info "CHUNK #{@counter}"
             block_id = @counter.to_s.rjust(5, '0')
             block_list << [block_id, :uncommitted]
 
