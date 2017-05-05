@@ -54,7 +54,12 @@ module CarrierWave
             @counter += 1
           end
 
-          @connection.commit_blob_blocks(@uploader.azure_container, @path, block_list)
+          @connection.commit_blob_blocks(
+            @uploader.azure_container,
+            @path,
+            block_list,
+            { blob_content_type: file.content_type }
+          )
           true
         end
 
